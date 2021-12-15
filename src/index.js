@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const DataBase = require('better-sqlite3');
 
 // create server
 const server = express();
+const db = new DataBase('./src/data/database.db', { verbose: console.log });
 
 // set express middleware
 //   we must always put these lines, until we know what they do
