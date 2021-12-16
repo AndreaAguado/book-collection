@@ -12,6 +12,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
+    "publish": "cd web && npm run build && cd .. && rm -rf ./public ; mv ./web/build ./public",
+    "build": "cd web && npm install && npm run build && cd .. && mv ./web/build ./public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
