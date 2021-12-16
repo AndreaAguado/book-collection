@@ -1,19 +1,16 @@
 import '../styles/layout/Main.scss'
 import Form from './Form';
+import SectionWrapper from './SectionWrapper';
 const Main = () => {
     return (
         <main className="main">
-            <section className="titles">
-                <h2>Titles</h2>
-            </section>
-            <section className="add_book">
-                <h2>Add new book</h2>
+            <SectionWrapper classname="titles" section_name="Titles"></SectionWrapper>
+            <SectionWrapper classname="add_book" section_name="Add new book">
                 <Form></Form>
-            </section>
-            <section className="update_book">
-                <h2>Update book info</h2>
+            </SectionWrapper>
+            <SectionWrapper classname="update_book" section_name="Update book info">
                 <Form></Form>
-            </section>
+            </SectionWrapper>
         </main>
     )
 }
