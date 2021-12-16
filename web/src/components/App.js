@@ -1,11 +1,10 @@
 import '../styles/App.scss';
 import Footer from './Footer';
+import Header from './Header';
 const App = () => {
   return (
     <div className="page">
-      <header className="header">
-        <h1>Book Collection</h1>
-      </header>
+      <Header></Header>
       <main className="main">
         <section className="titles">
           <h2>Titles</h2>
