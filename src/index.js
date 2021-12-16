@@ -75,6 +75,42 @@ server.post('/author', (req, res) => {
     res.json(response);
 })
 
+// creates new book 
+
+server.post('/book', (req, res) => {
+    const response = {};
+    // search for existing auhor in db
+    const queryAuthorId = db.prepare('SELECT id from authors WHERE first_name = ? and last_name = ?');
+    const authorId = queryAuthorId.get(req.body.first_name, req.body.last_name);
+    let newAuthorId = authorId.id;
+    console.log(authorId);
+    if (authorId === undefined) {
+        const queryAddAuthor = db.prepare(
+            'INSERT INTO authors (first_name, last_name) VALUES (?, ?)');
+        const authorData = queryAddAuthor.run(
+            req.body.first_name,
+            req.body.last_name
+        );
+        newAuthorId = authorData.lastInsertRowid;
+    }
+    const queryAddBook = db.prepare(
+        'INSERT INTO books (name, isbn, author) VALUES (?, ?, ?)');
+    const bookData = queryAddBook.run(
+        req.body.name,
+        req.body.isbn,
+        newAuthorId
+    );
+    if (bookData.changes !== 0) {
+        response.success = true;
+    }
+    else {
+        response.success = false;
+    }
+    res.json(response);
+})
+
+
+
 // STATIC SERVER: listen files in public folder
 const staticServerPath = './public'; // relative to the root of the project
 server.use(express.static(staticServerPath));
