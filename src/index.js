@@ -56,6 +56,25 @@ server.get('/author/:id', (req, res) => {
     res.json(author);
 });
 
+// create new author
+server.post('/author', (req, res) => {
+    const response = {};
+    const query = db.prepare(
+        'INSERT INTO authors (first_name, last_name) VALUES (?, ?)');
+    const authorData = query.run(
+        req.body.first_name,
+        req.body.last_name
+    );
+    console.log(authorData);
+    if (authorData.changes !== 0) {
+        response.success = true;
+    }
+    else {
+        response.success = false;
+    }
+    res.json(response);
+})
+
 // STATIC SERVER: listen files in public folder
 const staticServerPath = './public'; // relative to the root of the project
 server.use(express.static(staticServerPath));
