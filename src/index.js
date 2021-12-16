@@ -28,6 +28,13 @@ server.get('/books', (req, res) => {
     res.json(books);
 })
 
+// get book by id 
+server.get('/book/:id', (req, res) => {
+    const query = db.prepare('SELECT * from books where id = ?');
+    const book = query.get(req.params.id);
+    res.json(book);
+});
+
 // STATIC SERVER: listen files in public folder
 const staticServerPath = './public'; // relative to the root of the project
 server.use(express.static(staticServerPath));
