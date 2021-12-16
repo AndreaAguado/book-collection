@@ -42,6 +42,13 @@ server.get('/authors', (req, res) => {
     res.json(authors);
 })
 
+// get author by id 
+server.get('/author/:id', (req, res) => {
+    const query = db.prepare('SELECT * from authors where id = ?');
+    const author = query.get(req.params.id);
+    res.json(author);
+});
+
 // STATIC SERVER: listen files in public folder
 const staticServerPath = './public'; // relative to the root of the project
 server.use(express.static(staticServerPath));
