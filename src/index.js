@@ -32,7 +32,14 @@ server.get('/books', (req, res) => {
 server.get('/book/:id', (req, res) => {
     const query = db.prepare('SELECT * from books where id = ?');
     const book = query.get(req.params.id);
-    res.json(book);
+    const query2 = db.prepare('SELECT * from authors where id = ?');
+    const author = query2.get(book.author);
+    const response = {};
+    response.id = book.id;
+    response.name = book.name;
+    response.isbn = book.isbn;
+    response.author = author;
+    res.json(response);
 });
 
 // get all authors 
