@@ -14,13 +14,13 @@
     justify-content: center;
     padding: 3px;
   }
-  //   &_link {
-  //     margin: 0 10px 0 10px;
-  //     color: $links_color;
-  //     &:hover {
-  //       color: $color_accents;
-  //     }
-  //   }
+  &_link {
+    margin: 0 10px 0 10px;
+    color: $links_color;
+    &:hover {
+      color: $links_hover;
+    }
+  }
   &_small {
     font-family: monospace;
   }

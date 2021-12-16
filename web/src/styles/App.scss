@@ -1,1 +1,6 @@
 @import "./core/reset.scss";
+@import "./core/variables.scss";
+.page {
+  min-height: 100vh;
+  background-color: $page_color;
+}
