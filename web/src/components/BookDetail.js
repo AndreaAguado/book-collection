@@ -1,6 +1,6 @@
-const BookDetail = () => {
+const BookDetail = (props) => {
     return (
-        <h2>Book Detail</h2>
+        <h2>hola mundo</h2>
     )
 }
 export default BookDetail;

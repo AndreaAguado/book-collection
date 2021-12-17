@@ -4,7 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import callToApi from '../services/callToApi.js';
 import { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch, Link } from 'react-router-dom';
 import BookDetail from './BookDetail';
 
 const App = () => {
@@ -39,11 +39,17 @@ const App = () => {
     }
   };
 
+  const routeData = useRouteMatch('/book-details/:id');
+  const bookId = routeData !== null ? routeData.params.id : '';
+  const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
+
   const renderBooksList = () => {
-    return booksToRender.map((book, index) => {
+    return booksToRender.map((book) => {
       return (
-        <li key={index} id={index}>
-          <p>{book.title}</p>
+        <li key={book.id} id={book.id}>
+          <Link to={`/book-details/${book.id}`}>
+            <p>{book.title}</p>
+          </Link>
         </li>)
     })
   }
@@ -56,9 +62,9 @@ const App = () => {
           <Main handleInput={handleInput} renderBooksList={renderBooksList}></Main>
           <Footer></Footer>
         </Route>
-        <Route path="/book">
+        <Route path="/book-details/:id">
           <Header></Header>
-          <BookDetail></BookDetail>
+          <BookDetail clickedBook={clickedBook}></BookDetail>
           <Footer></Footer>
         </Route>
       </Switch>

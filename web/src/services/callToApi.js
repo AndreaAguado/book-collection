@@ -6,6 +6,7 @@ const getAllBooks = () => {
             console.log(response);
             return response.map((book) => {
                 return {
+                    id: book.id,
                     title: book.name
                 }
             })
