@@ -2,8 +2,8 @@ import '../styles/App.scss';
 import Footer from './Footer';
 import Header from './Header';
 import Main from './Main';
-
-import { useState } from 'react';
+import callToApi from '../services/callToApi.js';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const defaultData = {
@@ -13,6 +13,14 @@ const App = () => {
     isbn: '',
   };
   const [data, setData] = useState(defaultData);
+  const [booksToRender, setBooksToRender] = useState([]);
+
+  useEffect(() => {
+    callToApi.getAllBooks().then(response => {
+      console.log(response);
+      setBooksToRender(response);
+    })
+  }, [])
 
   const handleInput = (value, name) => {
     const whichInput = name;
