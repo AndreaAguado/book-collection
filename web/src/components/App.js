@@ -4,6 +4,8 @@ import Header from './Header';
 import Main from './Main';
 import callToApi from '../services/callToApi.js';
 import { useState, useEffect } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import BookDetail from './BookDetail';
 
 const App = () => {
   const defaultData = {
@@ -48,9 +50,18 @@ const App = () => {
 
   return (
     <div className="page">
-      <Header></Header>
-      <Main handleInput={handleInput} renderBooksList={renderBooksList}></Main>
-      <Footer></Footer>
+      <Switch>
+        <Route exact path="/">
+          <Header></Header>
+          <Main handleInput={handleInput} renderBooksList={renderBooksList}></Main>
+          <Footer></Footer>
+        </Route>
+        <Route path="/book">
+          <Header></Header>
+          <BookDetail></BookDetail>
+          <Footer></Footer>
+        </Route>
+      </Switch>
     </div>);
 };
 
