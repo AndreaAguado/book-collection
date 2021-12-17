@@ -41,8 +41,8 @@ server.get('/book/:id', (req, res) => {
     response.name = book.name;
     response.isbn = book.isbn;
     response.author = author;
-    res.json(response);
-    res.render('bookDatail', response);
+    // res.json(response);
+    res.render('bookDetail', response);
 });
 
 // get all authors 
