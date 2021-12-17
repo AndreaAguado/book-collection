@@ -4,7 +4,11 @@ import SectionWrapper from './SectionWrapper';
 const Main = (props) => {
     return (
         <main className="main">
-            <SectionWrapper classname="titles" section_name="Titles"></SectionWrapper>
+            <SectionWrapper classname="titles" section_name="Titles">
+                <ul>
+                    {props.renderBooksList()}
+                </ul>
+            </SectionWrapper>
             <SectionWrapper classname="add_book" section_name="Add new book">
                 <Form handleInput={props.handleInput}></Form>
             </SectionWrapper>

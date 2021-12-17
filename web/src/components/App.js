@@ -36,10 +36,20 @@ const App = () => {
       setData({ ...data, isbn: value });
     }
   };
+
+  const renderBooksList = () => {
+    return booksToRender.map((book, index) => {
+      return (
+        <li key={index} id={index}>
+          <p>{book.title}</p>
+        </li>)
+    })
+  }
+
   return (
     <div className="page">
       <Header></Header>
-      <Main handleInput={handleInput}></Main>
+      <Main handleInput={handleInput} renderBooksList={renderBooksList}></Main>
       <Footer></Footer>
     </div>);
 };
