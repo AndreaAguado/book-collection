@@ -10,6 +10,7 @@
   font-size: 30px;
   box-sizing: border-box;
   font-family: $header_title;
+  position: relative;
   @media all and (max-width: 500px) {
     flex-direction: column;
   }
