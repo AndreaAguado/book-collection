@@ -16,13 +16,26 @@ const App = () => {
   };
   const [data, setData] = useState(defaultData);
   const [booksToRender, setBooksToRender] = useState([]);
+  const [bookToRender, setBookToRender] = useState({});
+
+  const routeData = useRouteMatch('/book-details/:id');
+  const bookId = routeData !== null ? routeData.params.id : '';
+  const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
 
   useEffect(() => {
     callToApi.getAllBooks().then(response => {
       console.log(response);
       setBooksToRender(response);
     })
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (clickedBook !== undefined) {
+      callToApi.getBookById(clickedBook.id).then(response => {
+        setBookToRender(response);
+      })
+    }
+  }, [clickedBook]);
 
   const handleInput = (value, name) => {
     const whichInput = name;
@@ -39,9 +52,9 @@ const App = () => {
     }
   };
 
-  const routeData = useRouteMatch('/book-details/:id');
-  const bookId = routeData !== null ? routeData.params.id : '';
-  const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
+  // const routeData = useRouteMatch('/book-details/:id');
+  // const bookId = routeData !== null ? routeData.params.id : '';
+  // const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
 
   const renderBooksList = () => {
     return booksToRender.map((book) => {
@@ -64,7 +77,7 @@ const App = () => {
         </Route>
         <Route path="/book-details/:id">
           <Header></Header>
-          <BookDetail clickedBook={clickedBook}></BookDetail>
+          <BookDetail bookToRender={bookToRender}></BookDetail>
           <Footer></Footer>
         </Route>
       </Switch>

@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-import callToApi from '../services/callToApi.js';
 
 const BookDetail = (props) => {
-    const [bookToRender, setBookToRender] = useState({});
-    useEffect(() => {
-        callToApi.getBookById(props.clickedBook.id).then(response => {
-            setBookToRender(response);
-        })
-    }, [props.clickedBook.id]);
-
     return (
         <section>
-            <h2>Title: {bookToRender.title}</h2>
-            <h3>Author: {bookToRender.author}</h3>
-            <p>ISBN: {bookToRender.isbn}</p>
+            <h2>Title: {props.bookToRender.title}</h2>
+            <h3>Author: {props.bookToRender.author}</h3>
+            <p>ISBN: {props.bookToRender.isbn}</p>
         </section>
     )
 }
