@@ -1,9 +1,31 @@
 .book_detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 20px;
   height: 80vh;
-  background-image: url(https://www.maxpixel.net/static/photo/640/Read-Book-Stack-Stacked-Books-Book-Literature-3346785.png);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-  opacity: 0.8;
-  align-items: center;
+  &::before {
+    content: "";
+    background-image: url("https://www.maxpixel.net/static/photo/640/Read-Book-Stack-Stacked-Books-Book-Literature-3346785.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
+  }
+  &_info {
+    position: relative;
+    align-items: center;
+    background-color: #7fffd4b8;
+    height: fit-content;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .update_book {
+    position: relative;
+  }
 }

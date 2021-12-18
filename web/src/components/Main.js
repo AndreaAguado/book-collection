@@ -12,9 +12,6 @@ const Main = (props) => {
             <SectionWrapper classname="add_book" section_name="Add new book">
                 <Form handleInput={props.handleInput}></Form>
             </SectionWrapper>
-            <SectionWrapper classname="update_book" section_name="Update book info">
-                <Form handleInput={props.handleInput}></Form>
-            </SectionWrapper>
         </main>
     )
 }
