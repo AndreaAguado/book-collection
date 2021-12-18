@@ -3,7 +3,7 @@
 .book_detail {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   padding: 20px;
   height: 80vh;
   &::before {
@@ -19,6 +19,12 @@
     left: 0px;
     opacity: 0.8;
   }
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 30px;
+  }
   &_info {
     position: relative;
     align-items: center;
@@ -32,7 +38,7 @@
   }
 }
 .return_link_container {
-  width: 100%;
+  width: fit-content;
   padding-left: 30px;
   font-size: 1.4rem;
   position: relative;
