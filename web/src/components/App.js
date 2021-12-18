@@ -4,7 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import callToApi from '../services/callToApi.js';
 import { useState, useEffect } from 'react';
-import { Route, Switch, useRouteMatch, Link } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import BookDetail from './BookDetail';
 import Book from './Book';
 
@@ -52,10 +52,6 @@ const App = () => {
       setData({ ...data, isbn: value });
     }
   };
-
-  // const routeData = useRouteMatch('/book-details/:id');
-  // const bookId = routeData !== null ? routeData.params.id : '';
-  // const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
 
   const renderBooksList = () => {
     return booksToRender.map((book) => {
