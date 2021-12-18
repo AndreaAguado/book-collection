@@ -1,3 +1,5 @@
+@import "../core/variables.scss";
+
 .book_detail {
   display: flex;
   flex-direction: row;
@@ -11,9 +13,9 @@
     background-position: left;
     background-size: contain;
     position: absolute;
-    top: 0px;
+    top: 25vh;
     right: 0px;
-    bottom: 0px;
+    bottom: -10vh;
     left: 0px;
     opacity: 0.8;
   }
@@ -27,5 +29,21 @@
   }
   .update_book {
     position: relative;
+  }
+}
+.return_link_container {
+  width: 100%;
+  padding-left: 30px;
+  font-size: 1.4rem;
+  position: relative;
+  z-index: 2;
+  .return_link {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    color: $links_color;
+    &_title {
+      margin: 10px;
+    }
   }
 }
