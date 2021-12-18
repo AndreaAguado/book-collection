@@ -6,6 +6,7 @@ import callToApi from '../services/callToApi.js';
 import { useState, useEffect } from 'react';
 import { Route, Switch, useRouteMatch, Link } from 'react-router-dom';
 import BookDetail from './BookDetail';
+import Book from './Book';
 
 const App = () => {
   const defaultData = {
@@ -59,11 +60,8 @@ const App = () => {
   const renderBooksList = () => {
     return booksToRender.map((book) => {
       return (
-        <li key={book.id} id={book.id}>
-          <Link to={`/book-details/${book.id}`}>
-            <p>{book.title}</p>
-          </Link>
-        </li>)
+        <Book book={book}></Book>
+      )
     })
   }
 
