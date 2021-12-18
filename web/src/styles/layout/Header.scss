@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-family: $header_title;
   position: relative;
+  z-index: 2;
   @media all and (max-width: 500px) {
     flex-direction: column;
   }
