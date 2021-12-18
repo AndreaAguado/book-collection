@@ -42,6 +42,7 @@ const App = () => {
   const routeData = useRouteMatch('/book-details/:id');
   const bookId = routeData !== null ? routeData.params.id : '';
   const clickedBook = booksToRender.find((book) => book.id === parseInt(bookId));
+  console.log(clickedBook);
 
   const renderBooksList = () => {
     return booksToRender.map((book) => {
