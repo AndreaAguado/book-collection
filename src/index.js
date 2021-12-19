@@ -113,6 +113,14 @@ server.post('/book', (req, res) => {
     res.json(response);
 })
 
+// Update a book by id
+
+server.put('/book/:id', (req, res) => {
+    const query = db.prepare('UPDATE books set name = ?, isbn= ? where id = ?');
+    const book = query.run(req.body.name, req.body.isbn, req.body.id);
+    res.json(book);
+})
+
 
 
 // STATIC SERVER: listen files in public folder
