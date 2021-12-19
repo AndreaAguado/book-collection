@@ -2,19 +2,18 @@
 
 .titles_list {
   &_item {
-    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px;
     &:hover {
       background-color: $list_items_hover;
-      border-radius: 5px;
-      padding: 5px;
     }
   }
   &_link {
     color: $links_color;
     display: block;
+    padding: 5px;
     &:hover {
       color: white;
-      padding: 5px;
     }
   }
 }
