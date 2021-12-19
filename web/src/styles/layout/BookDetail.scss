@@ -6,6 +6,10 @@
   justify-content: center;
   padding: 20px;
   height: 80vh;
+  @media all and (max-width: 500px) {
+    height: fit-content;
+    flex-direction: column;
+  }
   &::before {
     content: "";
     background-image: url("https://www.maxpixel.net/static/photo/640/Read-Book-Stack-Stacked-Books-Book-Literature-3346785.png");
@@ -48,6 +52,17 @@
     align-items: center;
     width: fit-content;
     color: $links_color;
+    border-radius: 7px;
+    padding-left: 4px;
+    margin: 20px;
+    &:hover {
+      box-shadow: 1px 1px 13px 3px $return_button_shadow;
+    }
+    @media all and (max-width: 500px) {
+      color: black;
+      font-weight: bold;
+      background-color: $return_button_bg;
+    }
     &_title {
       margin: 10px;
     }
