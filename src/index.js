@@ -84,8 +84,8 @@ server.post('/author', (req, res) => {
 server.post('/book', (req, res) => {
     const response = {};
     // search for existing auhor in db
-    const queryAuthorId = db.prepare('SELECT id from authors WHERE first_name = ? and last_name = ?');
-    const authorId = queryAuthorId.get(req.body.first_name, req.body.last_name);
+    const queryAuthorId = db.prepare('SELECT id from authors WHERE lower(first_name) = ? and lower(last_name) = ?');
+    const authorId = queryAuthorId.get((req.body.first_name).toLocaleLowerCase(), (req.body.last_name).toLocaleLowerCase());
     let newAuthorId;
     console.log(authorId);
     if (authorId === undefined) {
