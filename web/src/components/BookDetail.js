@@ -22,7 +22,7 @@ const BookDetail = (props) => {
                         </nav>
                     </div>
                     <SectionWrapper classname="update_book" section_name="Update book info">
-                        <Form handleInput={props.handleInput}></Form>
+                        <Form handleInput={props.handleInput} data={props.data} id="update_book"></Form>
                     </SectionWrapper>
                 </section>
             </main>
