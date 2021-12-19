@@ -10,7 +10,7 @@ const Main = (props) => {
                 </ul>
             </SectionWrapper>
             <SectionWrapper classname="add_book" section_name="Add new book">
-                <Form handleInput={props.handleInput}></Form>
+                <Form handleInput={props.handleInput} data={props.data}></Form>
             </SectionWrapper>
         </main>
     )

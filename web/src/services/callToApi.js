@@ -27,9 +27,27 @@ const getBookById = (id) => {
         })
 }
 
+const addNewBook = (data) => {
+    console.log(JSON.stringify(data));
+    return fetch('/book', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            return response;
+        })
+
+}
+
 const objectToExport = {
     getAllBooks: getAllBooks,
-    getBookById: getBookById
+    getBookById: getBookById,
+    addNewBook: addNewBook
 }
 
 export default objectToExport;

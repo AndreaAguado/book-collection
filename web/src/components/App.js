@@ -16,13 +16,14 @@ const App = () => {
   //   isbn: '',
   // };
   const [data, setData] = useState({
-    title: '',
+    name: '',
     first_name: '',
     last_name: '',
     isbn: '',
   });
   const [booksToRender, setBooksToRender] = useState([]);
   const [bookToRender, setBookToRender] = useState({});
+  // const [success, setSuccess] = useState(false);
 
   const routeData = useRouteMatch('/book-details/:id');
   const bookId = routeData !== null ? routeData.params.id : '';
@@ -43,12 +44,19 @@ const App = () => {
     }
   }, [clickedBook]);
 
+  // useEffect(() => {
+  //   if (data.title && data.isbn && data.first_name && data.last_name) {
+  //     //when data fields are not empty a new book can be created
+  //     callToApi.addNewBook(data).then(response => {
+  //       setSuccess(response);
+  //     })
+  //   }
+  // }, [data])
+
   const handleInput = (value, name) => {
     const whichInput = name;
-    if (whichInput === 'title') {
-      setData({ ...data, title: value });
-    } else if (whichInput === 'title') {
-      setData({ ...data, title: value });
+    if (whichInput === 'name') {
+      setData({ ...data, name: value });
     } else if (whichInput === 'first_name') {
       setData({ ...data, first_name: value });
     } else if (whichInput === 'last_name') {
@@ -71,7 +79,7 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           <Header></Header>
-          <Main handleInput={handleInput} renderBooksList={renderBooksList}></Main>
+          <Main handleInput={handleInput} renderBooksList={renderBooksList} data={data}></Main>
           <Footer></Footer>
         </Route>
         <Route path="/book-details/:id">
