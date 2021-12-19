@@ -13,9 +13,6 @@ const db = new DataBase('./src/data/database.db', { verbose: console.log });
 server.use(cors());
 server.use(express.json());
 
-// //EJS configuration
-// server.set('view engine', 'ejs');
-
 // init express aplication
 const serverPort = process.env.PORT || 4000;
 server.listen(serverPort, () => {
@@ -43,7 +40,6 @@ server.get('/book/:id', (req, res) => {
     response.isbn = book.isbn;
     response.author = author;
     res.json(response);
-    // res.render('bookDetail', response);
 });
 
 // get all authors 

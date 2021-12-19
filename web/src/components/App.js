@@ -9,12 +9,7 @@ import BookDetail from './BookDetail';
 import Book from './Book';
 
 const App = () => {
-  // const defaultData = {
-  //   title: '',
-  //   first_name: '',
-  //   last_name: '',
-  //   isbn: '',
-  // };
+
   const [data, setData] = useState({
     name: '',
     first_name: '',
@@ -23,7 +18,6 @@ const App = () => {
   });
   const [booksToRender, setBooksToRender] = useState([]);
   const [bookToRender, setBookToRender] = useState({});
-  // const [success, setSuccess] = useState(false);
 
   const routeData = useRouteMatch('/book-details/:id');
   const bookId = routeData !== null ? routeData.params.id : '';
@@ -43,15 +37,6 @@ const App = () => {
       })
     }
   }, [clickedBook]);
-
-  // useEffect(() => {
-  //   if (data.title && data.isbn && data.first_name && data.last_name) {
-  //     //when data fields are not empty a new book can be created
-  //     callToApi.addNewBook(data).then(response => {
-  //       setSuccess(response);
-  //     })
-  //   }
-  // }, [data])
 
   const handleInput = (value, name) => {
     const whichInput = name;
