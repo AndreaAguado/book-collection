@@ -44,10 +44,26 @@ const addNewBook = (data) => {
 
 }
 
+const updateBook = (id, data) => {
+    return fetch(`/book/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            return response;
+        })
+}
+
 const objectToExport = {
     getAllBooks: getAllBooks,
     getBookById: getBookById,
-    addNewBook: addNewBook
+    addNewBook: addNewBook,
+    updateBook: updateBook
 }
 
 export default objectToExport;

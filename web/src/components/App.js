@@ -84,7 +84,7 @@ const App = () => {
         </Route>
         <Route path="/book-details/:id">
           <Header></Header>
-          <BookDetail bookToRender={bookToRender} handleInput={handleInput}></BookDetail>
+          <BookDetail bookToRender={bookToRender} handleInput={handleInput} data={data}></BookDetail>
           <Footer></Footer>
         </Route>
       </Switch>

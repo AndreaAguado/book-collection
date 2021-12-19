@@ -9,13 +9,26 @@ const Form = (props) => {
 
     const [success, setSuccess] = useState(false);
 
-    const handleCreate = () => {
-        console.log(props.data);
-        //when data fields are not empty a new book can be created
-        callToApi.addNewBook(props.data).then(response => {
-            setSuccess(response.success);
-            console.log(success);
-        })
+    const handleCreate = (ev) => {
+        if (ev.currentTarget.id === "add_book") {
+            console.log(props.data);
+            //when data fields are not empty a new book can be created
+            callToApi.addNewBook(props.data).then(response => {
+                setSuccess(response.success);
+                console.log(success);
+            })
+        }
+        else if (ev.currentTarget.id === "update_book") {
+            console.log(props.dataId);
+            console.log(props.data);
+            let objectForBody = props.data;
+            objectForBody.id = props.dataId;
+            console.log(objectForBody);
+            callToApi.updateBook(parseInt(props.dataId), objectForBody).then(response => {
+                console.log(response);
+            })
+        }
+
     }
 
     return (
