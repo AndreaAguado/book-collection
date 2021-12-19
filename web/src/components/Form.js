@@ -28,7 +28,7 @@ const Form = (props) => {
             <input onChange={handleChange} type="text" placeholder="Shakespeare" name="last_name" id="last_name" required />
             <label htmlFor="isbn">ISBN <span className="form_asterisk">*</span></label>
             <input onChange={handleChange} type="text" placeholder="978-1451552058" name="isbn" id="isbn" required />
-            <input onClick={handleCreate} type="submit" />
+            <input className="submit" onClick={handleCreate} type="submit" value="Submit" />
         </form>
     )
 }

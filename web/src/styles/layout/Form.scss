@@ -1,14 +1,19 @@
+@import "../core/variables.scss";
+
 .form {
   input {
     display: block;
     margin: 10px 0 10px 0;
     padding: 6px;
     border-radius: 5px;
-    border: solid 1px #d5107d;
+    border: solid 1px $form_accents;
     font-size: inherit;
   }
   &_asterisk {
-    color: #d5107d;
+    color: $form_accents;
     font-weight: bold;
+  }
+  .submit:hover {
+    background-color: $form_accents;
   }
 }
