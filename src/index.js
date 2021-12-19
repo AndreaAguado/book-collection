@@ -119,8 +119,25 @@ server.post('/book', (req, res) => {
 // Update a book by id
 
 server.put('/book/:id', (req, res) => {
-    const query = db.prepare('UPDATE books set name = ?, isbn= ? where id = ?');
-    const book = query.run(req.body.name, req.body.isbn, req.body.id);
+    // search for existing auhor in db
+    const queryAuthorId = db.prepare('SELECT id from authors WHERE lower(first_name) = ? and lower(last_name) = ?');
+    const authorId = queryAuthorId.get((req.body.first_name).toLocaleLowerCase(), (req.body.last_name).toLocaleLowerCase());
+    let newAuthorId;
+    console.log(authorId);
+    if (authorId === undefined) {
+        const queryAddAuthor = db.prepare(
+            'INSERT INTO authors (first_name, last_name) VALUES (?, ?)');
+        const authorData = queryAddAuthor.run(
+            req.body.first_name,
+            req.body.last_name
+        );
+        newAuthorId = authorData.lastInsertRowid;
+    }
+    else {
+        newAuthorId = authorId.id;
+    }
+    const queryBook = db.prepare('UPDATE books set name = ?, isbn= ? , author= ? where id = ?');
+    const book = queryBook.run(req.body.name, req.body.isbn, newAuthorId, req.body.id);
     res.json(book);
 })
 
