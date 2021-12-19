@@ -86,7 +86,7 @@ server.post('/book', (req, res) => {
     // search for existing auhor in db
     const queryAuthorId = db.prepare('SELECT id from authors WHERE first_name = ? and last_name = ?');
     const authorId = queryAuthorId.get(req.body.first_name, req.body.last_name);
-    let newAuthorId = authorId.id;
+    let newAuthorId;
     console.log(authorId);
     if (authorId === undefined) {
         const queryAddAuthor = db.prepare(
@@ -96,6 +96,9 @@ server.post('/book', (req, res) => {
             req.body.last_name
         );
         newAuthorId = authorData.lastInsertRowid;
+    }
+    else {
+        newAuthorId = authorId.id;
     }
     const queryAddBook = db.prepare(
         'INSERT INTO books (name, isbn, author) VALUES (?, ?, ?)');
