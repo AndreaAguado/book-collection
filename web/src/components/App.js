@@ -9,13 +9,18 @@ import BookDetail from './BookDetail';
 import Book from './Book';
 
 const App = () => {
-  const defaultData = {
+  // const defaultData = {
+  //   title: '',
+  //   first_name: '',
+  //   last_name: '',
+  //   isbn: '',
+  // };
+  const [data, setData] = useState({
     title: '',
     first_name: '',
     last_name: '',
     isbn: '',
-  };
-  const [data, setData] = useState(defaultData);
+  });
   const [booksToRender, setBooksToRender] = useState([]);
   const [bookToRender, setBookToRender] = useState({});
 
@@ -71,7 +76,7 @@ const App = () => {
         </Route>
         <Route path="/book-details/:id">
           <Header></Header>
-          <BookDetail bookToRender={bookToRender}></BookDetail>
+          <BookDetail bookToRender={bookToRender} handleInput={handleInput}></BookDetail>
           <Footer></Footer>
         </Route>
       </Switch>
