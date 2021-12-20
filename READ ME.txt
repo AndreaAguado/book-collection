@@ -1,0 +1,1 @@
+I would have liked to add unitary tests for the part of the BookDetail component to test if ISBN is "not available" in case the user didn't introduce one in the database.
