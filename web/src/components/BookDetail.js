@@ -12,7 +12,7 @@ const BookDetail = (props) => {
                     <div className="book_detail_container">
                         <SectionWrapper classname="book_detail_info" section_name={`Title: ${props.bookToRender.title}`}>
                             <h3>Author: {props.bookToRender.author}</h3>
-                            <p>ISBN: {props.bookToRender.isbn}</p>
+                            <p>ISBN:  {props.bookToRender.isbn ? props.bookToRender.isbn : "Not available"}</p>
                         </SectionWrapper>
                         <nav className="return_link_container">
                             <Link to="/" className="return_link" title="Go to homepage">
