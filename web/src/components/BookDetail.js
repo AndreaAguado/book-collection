@@ -16,7 +16,7 @@ const BookDetail = (props) => {
                         </SectionWrapper>
                         <nav className="return_link_container">
                             <Link to="/" className="return_link" title="Go to homepage">
-                                <i class="return_link_icon fas fa-chevron-circle-left"></i>
+                                <i className="return_link_icon fas fa-chevron-circle-left"></i>
                                 <p className="return_link_title">Return</p>
                             </Link>
                         </nav>
