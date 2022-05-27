@@ -10,6 +10,10 @@ const Form = (props) => {
     const [success, setSuccess] = useState(false);
 
     const handleCreate = (ev) => {
+        const data = props.data;
+        if (!data.name || !data.first_name || !data.last_name || !data.isbn) return false;
+
+
         if (ev.currentTarget.id === "add_book") {
             console.log(props.data);
             //when data fields are not empty a new book can be created
